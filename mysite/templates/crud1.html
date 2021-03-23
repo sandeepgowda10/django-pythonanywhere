@@ -5,13 +5,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Details</title>
-<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- 
+<!--
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 		border-radius: 3px;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
-	.table-title {        
+	.table-title {
 		padding-bottom: 15px;
 		background: #435d7d;
 		color: #fff;
@@ -86,7 +86,7 @@
         font-size: 13px;
         margin: 0 5px;
         cursor: pointer;
-    }	
+    }
     table.table td:last-child i {
 		opacity: 0.9;
 		font-size: 22px;
@@ -134,11 +134,11 @@
     }
     .pagination li a:hover {
         color: #666;
-    }	
+    }
     .pagination li.active a, .pagination li.active a.page-link {
         background: #03A9F4;
     }
-    .pagination li.active a:hover {        
+    .pagination li.active a:hover {
         background: #0397d6;
     }
 	.pagination li.disabled i {
@@ -152,12 +152,12 @@
         float: left;
         margin-top: 10px;
         font-size: 13px;
-    }    
+    }
 	/* Custom checkbox */
 	.custom-checkbox {
 		position: relative;
 	}
-	.custom-checkbox input[type="checkbox"] {    
+	.custom-checkbox input[type="checkbox"] {
 		opacity: 0;
 		position: absolute;
 		margin: 5px 0 0 3px;
@@ -232,7 +232,7 @@
 	.modal .btn {
 		border-radius: 2px;
 		min-width: 100px;
-	}	
+	}
 	.modal form label {
 		font-weight: normal;
 	}
@@ -247,14 +247,14 @@
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-												
+
 					</div>
                 </div>
             </div>
             <table id="tableid" class="table table-striped table-hover">
                 <thead>
                     <tr>
-						
+
                         <th>Name</th>
                         <th>Email</th>
 						<th>Address</th>
@@ -265,7 +265,7 @@
                 <tbody>
 					{% for each in data %}
                     <tr>
-						
+
                         <td>{{each.name}}</td>
                         <td>{{each.email}}</td>
 						<td>{{each.address}}</td>
@@ -276,7 +276,7 @@
                         </td>
 					</tr>
 					{% endfor %}
-                    				
+
                 </tbody>
              </table>
 			<!-- <div class="clearfix">
@@ -299,11 +299,11 @@
 			<div class="modal-content">
 				<form method="post" id="addemp">
 					{% csrf_token %}
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Add Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<div class="form-group">
 							<label>Name</label>
 							<input name="name" id="name" type="text" class="form-control" required>
@@ -318,8 +318,8 @@
 						</div>
 						<div class="form-group">
 							<label>Phone</label>
-							<input name="phone" id="phone" type="text" class="form-control" required>
-						</div>					
+							<input name="phone" id="phone" type="text" pattern="[6789][0-9]{9}" class="form-control" required>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -335,13 +335,13 @@
 			<div class="modal-content">
 				<form method="post" id="addemp">
 					{% csrf_token %}
-					
+
 					<input hidden name="emp_edit_name" value="" id="emp_edit_id">
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Edit Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<div class="form-group">
 							<label>Name</label>
 							<input type="text" name="name" id="name_edit"class="form-control" required>
@@ -356,8 +356,8 @@
 						</div>
 						<div class="form-group">
 							<label>Phone</label>
-							<input type="text" name="phone" id="phone_edit" class="form-control" required>
-						</div>					
+							<input type="text" name="phone" id="phone_edit" pattern="[6789][0-9]{9}" class="form-control" required>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -375,11 +375,11 @@
 					{% csrf_token %}
 					<input hidden name="emp_delete_name" value="" id="emp_delete_id">
 
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Delete Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<p>Are you sure you want to delete these Records?</p>
 						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
@@ -415,7 +415,7 @@ $.ajax({
 		$("#editEmployeeModal").modal('hide');
 		$("#deleteEmployeeModal").modal('hide');
 
-		
+
 		// debugger;
 
 			$('#tableid').empty();
@@ -424,7 +424,7 @@ $.ajax({
 	},
 
 });
-			
+
 	});
 
 
@@ -438,7 +438,7 @@ function emp_edit(emp_id, emp_name, emp_email, emp_address, emp_phone){
 	$('#phone_edit').val(emp_phone);
 
 
-	
+
 
 }
 
@@ -453,7 +453,33 @@ function emp_delete(emp_id){
 
 }
 
+$("#addEmployeeModal").on("hidden.bs.modal", () => {
+  $('.form-control').val('')
+});
 
+
+$('#phone').keypress(function (e) {
+   var regex = new RegExp("^[0-9-]+$");
+   var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+   if (regex.test(str)) {
+    return true;
+   }
+
+   e.preventDefault();
+   return false;
+   });
+
+
+$('#phone_edit').keypress(function (e) {
+var regex = new RegExp("^[0-9-]+$");
+var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+if (regex.test(str)) {
+return true;
+}
+
+e.preventDefault();
+return false;
+});
 
 
 </script>
