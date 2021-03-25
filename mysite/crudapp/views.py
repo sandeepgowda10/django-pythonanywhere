@@ -1,14 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .models import *
-
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
-
+@csrf_exempt
 def home(request):
     context = {}
     context['data'] = Person.objects.all()
     return render(request, 'crud1.html', context)
 
+@csrf_exempt
 def addEmployee(request):
     context = {}
     context['data'] = Person.objects.all()
@@ -23,6 +24,11 @@ def addEmployee(request):
 
             editemp_contact = Contact.objects.get(id=request.POST.get('phone_edit_name'))
             editemp_contact.phone = request.POST.get('phone')
+            if request.POST.get('emergency_contact_edit'):
+                editemp_contact.emergency_contact = request.POST.get('emergency_contact_edit')
+            else:
+                editemp_contact.emergency_contact = None
+
             editemp_contact.save()
 
 
@@ -41,7 +47,11 @@ def addEmployee(request):
 
         else:
             emp_address = Address.objects.create(address=request.POST.get('address'))
-            emp_phone_no = Contact.objects.create(phone=request.POST.get('phone'))
+            emp_phone_no = Contact()
+            emp_phone_no.phone = request.POST.get('phone')
+            if request.POST.get('emergency_contact_add'):
+                emp_phone_no.emergency_contact = request.POST.get('emergency_contact_add')
+            emp_phone_no.save()
 
             addemp = Person()
             addemp.name = request.POST.get('name')

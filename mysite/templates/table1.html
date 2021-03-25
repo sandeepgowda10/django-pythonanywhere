@@ -19,12 +19,12 @@
             <td>{{each.phone.phone}}</td> -->
             <td width="25%">
                 <!-- <a href="#editEmployeeModal" class="" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">	&#128065;</i></a> -->
-                <a href="#viewEmployeeModal" class="edit" onclick="emp_view('{{each.name}}', '{{each.email}}', '{{each.address}}', '{{each.phone.phone}}')" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#128065;</i></a>
-                <a href="#editEmployeeModal" class="edit" onclick="emp_edit('{{each.id}}','{{each.name}}', '{{each.email}}', '{{each.address}}', '{{each.phone.phone}}',  '{{each.address.id}}',  '{{each.phone.id}}')" style="padding-right: 2px;"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a href="#viewEmployeeModal" class="edit" onclick="emp_view('{{each.name}}', '{{each.email}}', '{{each.address}}', '{{each.phone.phone}}', '{{each.phone.emergency_contact}}')" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#128065;</i></a>
+                <a href="#editEmployeeModal" class="edit" onclick="emp_edit('{{each.id}}','{{each.name}}', '{{each.email}}', '{{each.address}}', '{{each.phone.phone}}', '{{each.phone.emergency_contact}}', '{{each.address.id}}',  '{{each.phone.id}}')" style="padding-right: 2px;"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                 <a href="#deleteEmployeeModal" class="" onclick="emp_delete('{{each.id}}')" data-toggle="modal"> <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
         </tr>
         {% endfor %}
 
     </tbody>
- </table>
+</table>

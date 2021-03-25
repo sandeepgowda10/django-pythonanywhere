@@ -272,8 +272,8 @@
                         <td>{{each.phone.phone}}</td> -->
                         <td width="25%">
 							<!-- <a href="#editEmployeeModal" class="" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">	&#128065;</i></a> -->
-							<a href="#viewEmployeeModal" class="edit" onclick="emp_view('{{each.name}}', '{{each.email}}', '{{each.address}}', '{{each.phone.phone}}')" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#128065;</i></a>
-                            <a href="#editEmployeeModal" class="edit" onclick="emp_edit('{{each.id}}','{{each.name}}', '{{each.email}}', '{{each.address}}', '{{each.phone.phone}}',  '{{each.address.id}}',  '{{each.phone.id}}')" style="padding-right: 2px;"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<a href="#viewEmployeeModal" class="edit" onclick="emp_view('{{each.name}}', '{{each.email}}', '{{each.address}}', '{{each.phone.phone}}', '{{each.phone.emergency_contact}}')" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#128065;</i></a>
+                            <a href="#editEmployeeModal" class="edit" onclick="emp_edit('{{each.id}}','{{each.name}}', '{{each.email}}', '{{each.address}}', '{{each.phone.phone}}', '{{each.phone.emergency_contact}}', '{{each.address.id}}',  '{{each.phone.id}}')" style="padding-right: 2px;"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="" onclick="emp_delete('{{each.id}}')" data-toggle="modal"> <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
 					</tr>
@@ -322,6 +322,11 @@
 							<label>Phone</label>
 							<input name="phone" id="phone" type="text" pattern="[6789][0-9]{9}" class="form-control" required>
 						</div>
+
+						<div class="form-group">
+							<label>Emergency Contact</label>
+							<input name="emergency_contact_add" id="phone" type="text" pattern="[6789][0-9]{9}" class="form-control">
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -361,6 +366,11 @@
 						<div class="form-group">
 							<label>Phone</label>
 							<input type="text" name="phone" id="phone_view" pattern="[6789][0-9]{9}" class="form-control" readonly>
+						</div>
+
+						<div class="form-group">
+							<label>Emergency Contact</label>
+							<input name="emergency_contact_view" id="emer_phone_view" type="text" pattern="[6789][0-9]{9}" class="form-control" readonly>
 						</div>
 					</div>
 					<!-- <div class="modal-footer">
@@ -404,6 +414,11 @@
 						<div class="form-group">
 							<label>Phone</label>
 							<input type="text" name="phone" id="phone_edit" pattern="[6789][0-9]{9}" class="form-control" required>
+						</div>
+
+						<div class="form-group">
+							<label>Emergency Contact</label>
+							<input name="emergency_contact_edit" id="emer_phone_edit" type="text" pattern="[6789][0-9]{9}" class="form-control">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -479,12 +494,13 @@ $.ajax({
 
 
 
-function emp_view(emp_name, emp_email, emp_address, emp_phone){
+function emp_view(emp_name, emp_email, emp_address, emp_phone, emp_emergencyphone){
 
 	$('#name_view').val(emp_name);
 	$('#email_view').val(emp_email);
 	$('#address_view').val(emp_address);
 	$('#phone_view').val(emp_phone);
+	$('#emer_phone_view').val(emp_emergencyphone);
 
 
 };
@@ -492,7 +508,7 @@ function emp_view(emp_name, emp_email, emp_address, emp_phone){
 
 
 
-function emp_edit(emp_id, emp_name, emp_email, emp_address, emp_phone, emp_addr_id, emp_addr_phone){
+function emp_edit(emp_id, emp_name, emp_email, emp_address, emp_phone, emp_emergencyphone, emp_addr_id, emp_addr_phone){
 	// $('#emp_edit_id').val("");
 	// alert(emp_addr_phone)
 	// alert(emp_addr_id)
@@ -501,6 +517,8 @@ function emp_edit(emp_id, emp_name, emp_email, emp_address, emp_phone, emp_addr_
 	$('#email_edit').val(emp_email);
 	$('#address_edit').val(emp_address);
 	$('#phone_edit').val(emp_phone);
+	$('#emer_phone_edit').val(emp_emergencyphone);
+	
 
 	$('#address_edit_id').attr('value', emp_addr_id);
 	$('#phone_edit_id').attr('value', emp_addr_phone);

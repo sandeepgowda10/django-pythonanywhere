@@ -9,6 +9,7 @@ class Address(models.Model):
 
 class Contact(models.Model):
     phone = models.PositiveSmallIntegerField()
+    emergency_contact = models.PositiveSmallIntegerField(blank=True, null=True)
 
 
 class Person(models.Model):
